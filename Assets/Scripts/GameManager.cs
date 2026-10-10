@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int flagCount = 0;
 
     private SceneChanger sceneChanger;
+    private ItemPoolManager itemManager;
 
     private List<Tile> tiles = new();
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         sceneChanger = GetComponent<SceneChanger>();
+        itemManager = GetComponent<ItemPoolManager>();
         CreateGameBoard(9, 9, 10);
         //CreateGameBoard(16, 16, 40);
         //CreateGameBoard(30, 16, 90);
@@ -55,8 +57,18 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameState() {
         int[] minePositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
-        
-        for(int i = 0; i < numMines; i++)
+        int[] itemPositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
+
+        List<ShopItem> pool = new List<ShopItem>();
+
+        for (int i = 0; i < pool.Count; i++)
+        {
+            int pos = itemPositions[i];
+            if (pos != (height * width) / 2)
+                tiles[pos].isMine = true;
+        }
+
+        for (int i = 0; i < numMines; i++)
         {
             int pos = minePositions[i];
             if(pos != (height * width)/2)
