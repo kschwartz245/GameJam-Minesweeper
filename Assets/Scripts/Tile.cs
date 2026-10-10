@@ -69,15 +69,20 @@ public class Tile : MonoBehaviour
             if(isMine)
             {
                 spriteRenderer.sprite = mineHitTile;
-                gameManager.GameOver();
-            } else
+                if (HasShield() == false) 
+                {
+                    gameManager.GameOver();
+                }
+            } 
+            else
             {
                 spriteRenderer.sprite = clickedTile[mineCount];
                 if(mineCount == 0)
                 {
                     gameManager.ClickNeighbours(this);
                 }
-                gameManager.CheckGameOver();           }
+                gameManager.CheckGameOver();           
+            }
         }
     }
 
@@ -102,6 +107,21 @@ public class Tile : MonoBehaviour
             flagged = true;
             spriteRenderer.sprite = flaggedTile;
         }
+    }
+
+    private bool HasShield() 
+    {
+        for (int i = 0; i < ItemPoolManager.ItemPool.Count; i++) 
+        {
+            if (ItemPoolManager.ItemPool[i].itemID == 0) 
+            {
+                ItemPoolManager.ItemPool.RemoveAt(i);
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
