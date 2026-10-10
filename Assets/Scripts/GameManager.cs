@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform tilePrefab;
     [SerializeField] private Transform gameHolder;
+
+    private SceneChanger sceneChanger;
 
     private List<Tile> tiles = new();
 
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        sceneChanger = GetComponent<SceneChanger>();
         CreateGameBoard(9, 9, 10);
         //CreateGameBoard(16, 16, 40);
         //CreateGameBoard(30, 16, 90);
@@ -123,10 +127,18 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     { //disable clicks on all mines
-        foreach (Tile tile in tiles)
+           foreach (Tile tile in tiles)
         {
             tile.ShowGameOverState();
         }
+        StartCoroutine(GoToGO());
+    }
+    
+    IEnumerator GoToGO() 
+    {
+        yield return new WaitForSeconds(2f);
+
+        sceneChanger.LoadSceneByName("GameOverScreen");
     }
 
     public void CheckGameOver()

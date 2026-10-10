@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2528945350537408158, guid: ad1129d6bebfe9944897d65c4fbda8f9, type: 3}
+  m_Sprite: {fileID: 4372065899994584491, guid: 594ed8d570d76ca41b79ab48a763eef7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,21 +180,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9e4706023c62d40bc302f80007d33d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  unclickedTile: {fileID: 2528945350537408158, guid: ad1129d6bebfe9944897d65c4fbda8f9, type: 3}
-  flaggedTile: {fileID: 1805158079502305607, guid: 82d51ca512b7d664b91fa5cabb22193f, type: 3}
+  unclickedTile: {fileID: 4372065899994584491, guid: 594ed8d570d76ca41b79ab48a763eef7, type: 3}
+  flaggedTile: {fileID: 6845446656732506481, guid: 3fa058dbaa172224eb0c2f7bbc0a9619, type: 3}
   clickedTile:
-  - {fileID: 8995154407686431259, guid: 762c342d2fa81bf4bbb56214491342c8, type: 3}
-  - {fileID: -855298285791758126, guid: f091d302708910442b7ff161d357018e, type: 3}
-  - {fileID: 6937817954938267909, guid: f266b6c816774f34b899a0a288ef4b51, type: 3}
-  - {fileID: -6470460504253458178, guid: 56095ae8eaefbf745a35045aacd9b22c, type: 3}
-  - {fileID: -4178046375966092550, guid: d09a7076db8837841a83a5e584b86e06, type: 3}
-  - {fileID: 4130640169021434097, guid: 1447d3400f3486942adeab84a2ee3a28, type: 3}
-  - {fileID: 3465286685962602723, guid: 24f4a4e07c874b04aa6f0c13730ee4d1, type: 3}
-  - {fileID: 7028616704906629411, guid: 7f95e236e1b479b4a809f373b3fdaa41, type: 3}
-  - {fileID: 8288426215254106694, guid: 9f791d4bd9fcf00499e3800acb54c0d5, type: 3}
-  mineTile: {fileID: 8135663367076951168, guid: e338a79fe31a11c4fafeafd97a579af3, type: 3}
-  mineWrongTile: {fileID: -851801900025170881, guid: abd769ac46524e045b2a698d5a9cb15f, type: 3}
-  mineHitTile: {fileID: 8250157587147991992, guid: 8033d5256157b8943ae7585db394e53d, type: 3}
+  - {fileID: 1168462315446598386, guid: 7b573c9440943364687cdc48fe85e821, type: 3}
+  - {fileID: -6472889986024323599, guid: 34f57a41d6a9b70469ebe6ac629d8aaa, type: 3}
+  - {fileID: -2271150619112703178, guid: 6606694bfdb241e44856f088da57853f, type: 3}
+  - {fileID: -4557418895149613133, guid: 785a3c6804a0f214fac5b45f6d3e748e, type: 3}
+  - {fileID: -6142426700042515043, guid: 7e3479a05eb65554a9cef69af4617119, type: 3}
+  - {fileID: 1237937291321990833, guid: a48203420bb43aa44b286016accd0797, type: 3}
+  - {fileID: -2258906149881063637, guid: b57283fde3e360048b60e67852f8a38f, type: 3}
+  - {fileID: 1716432099037613776, guid: 759417d85d331c843842343907d93907, type: 3}
+  - {fileID: 6376899975417534804, guid: acf092a9fd54cd948bf39997612af65b, type: 3}
+  mineTile: {fileID: -5939084792424487179, guid: f9f965eece0504b428812af9d8056ee1, type: 3}
+  mineWrongTile: {fileID: 4300463617629797122, guid: 4a82d60ff5c13ae49b383dcff4868821, type: 3}
+  mineHitTile: {fileID: -6203530660284440750, guid: fc6a537af8a4a6544b5a9ea60f929dcc, type: 3}
+  gameManager: {fileID: 0}
   flagged: 0
   active: 1
   isMine: 0
