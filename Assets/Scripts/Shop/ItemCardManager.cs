@@ -38,29 +38,28 @@ public class ItemCardManager : MonoBehaviour
     {
         if (bought == false) 
         {
-            //if (playerCoins >= cost)
-            //{
-            if (ItemPoolManager.ItemPool.Count < ItemPoolManager.ItemPoolMax)
+            if (ItemPoolManager.coins >= item.itemCost)
             {
-                //playerCoins -= cost;
-                ItemPoolManager.ItemPool.Add(item);
-                icon.color = new Color32(75, 75, 75, 255);
-                cost.text = "SOLD";
-                bought = true;
-            }
-            else 
-            {
-                if (ItemPoolManager.activeShopWarning == false) 
+                if (ItemPoolManager.ItemPool.Count < ItemPoolManager.ItemPoolMax)
                 {
-                    ShowWarning(0);
+                    ItemPoolManager.coins -= item.itemCost;
+                    ItemPoolManager.ItemPool.Add(item);
+                    icon.color = new Color32(75, 75, 75, 255);
+                    cost.text = "SOLD";
+                    bought = true;
+                }
+                else 
+                {
+                    if (ItemPoolManager.activeShopWarning == false) 
+                    {
+                        ShowWarning(0);
+                    }
                 }
             }
-            /*}
-             * else
-             * {
-             * ShowWarning(1);
-             * }
-            */
+            else
+            {
+                ShowWarning(1);
+            }            
         }
     }
 
