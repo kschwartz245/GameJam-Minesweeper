@@ -9,6 +9,7 @@ public class EdgeDetection : MonoBehaviour
     public float EdgeY;
     private float NegEdgeY;
     public GameObject targetObj;
+    public GameObject playerObj;
 
     void Start()
     {
@@ -23,14 +24,14 @@ public class EdgeDetection : MonoBehaviour
         {
             Debug.Log("X Threshold Reached");
             targetObj.SetActive(true);
-            Destroy(this);
+            Destroy(playerObj);
         }
 
         if (transform.position.y > EdgeY || transform.position.y < NegEdgeY)
         {
             Debug.Log("Y Threshold Reached");
             targetObj.SetActive(true);
-            Destroy(this);
+            Destroy(playerObj);
         }
     }
 
