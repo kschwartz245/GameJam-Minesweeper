@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform tilePrefab;
     [SerializeField] private Transform gameHolder;
+    public bool safeCenter = true;
+    public int flagLimit = 10;
+    public int flagCount = 0;
 
     private SceneChanger sceneChanger;
 
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < numMines; i++)
         {
             int pos = minePositions[i];
+            if(pos != (height * width)/2)
             tiles[pos].isMine = true;
         }
         for(int i = 0; i < tiles.Count; i++)
