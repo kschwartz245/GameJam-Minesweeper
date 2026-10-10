@@ -30,17 +30,25 @@ public class Tile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            this.ClickedTile();
+            ClickedTile();
         }
     }
 
     private void OnMouseOver()
     {
         if (active) {
-            if (Input.GetMouseButtonDown(0)) {
-                ClickedTile();
-            } else if (Input.GetMouseButtonDown(1)) { 
-                flagged = !flagged;
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) {
+                if (gameManager.flagCount < gameManager.flagLimit && !flagged)
+                {
+                    flagged = !flagged;
+                    gameManager.flagCount++;
+                }
+                else if (flagged)
+                {
+                    flagged = !flagged;
+                    gameManager.flagCount--;
+                }
+
                 if (flagged)
                 {
                     spriteRenderer.sprite = flaggedTile;
