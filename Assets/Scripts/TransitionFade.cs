@@ -10,7 +10,8 @@ public class TransitionFade : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(FadeOut());
+        SetAlpha(1f);
+        StartCoroutine(Fade(0f));
     }
 
     public void FadeAndLoad(string sceneName)
@@ -20,41 +21,34 @@ public class TransitionFade : MonoBehaviour
 
     private IEnumerator Fader(string sceneName)
     {
-        yield return StartCoroutine(Fade(1f, duration));
+        yield return StartCoroutine(Fade(1f));
 
         SceneManager.LoadScene(sceneName);
-
-        yield return StartCoroutine(Fade(0f, duration));
     }
 
-    private IEnumerator Fade(float targetAlpha, float fadeDuration)
+    private IEnumerator Fade(float targetAlpha)
     {
         float startAlpha = image.color.a;
         float t = 0f;
 
-        while (t < fadeDuration)
+        while (t < duration)
         {
             t += Time.deltaTime;
-            float alpha = Mathf.Lerp(
-                startAlpha,
-                targetAlpha,
-                t / fadeDuration
-            );
 
             Color c = image.color;
-            c.a = alpha;
+            c.a = Mathf.Lerp(startAlpha, targetAlpha,
+                Mathf.Clamp01(t / duration));
             image.color = c;
 
             yield return null;
         }
 
-        Color finalColor = image.color;
-        finalColor.a = targetAlpha;
-        image.color = finalColor;
+        SetAlpha(targetAlpha);
     }
-
-    private IEnumerator FadeOut()
+    private void SetAlpha(float alpha)
     {
-        yield return StartCoroutine(Fade(0f, duration));
+        Color c = image.color;
+        c.a = alpha;
+        image.color = c;
     }
 }
