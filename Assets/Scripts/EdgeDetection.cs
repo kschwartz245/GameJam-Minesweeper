@@ -23,14 +23,14 @@ public class EdgeDetection : MonoBehaviour
         {
             Debug.Log("X Threshold Reached");
             targetObj.SetActive(true);
-            Time.timeScale = 0.0f;
+            Destroy(this);
         }
 
         if (transform.position.y > EdgeY || transform.position.y < NegEdgeY)
         {
             Debug.Log("Y Threshold Reached");
             targetObj.SetActive(true);
-            Time.timeScale = 0.0f;
+            Destroy(this);
         }
     }
 
