@@ -131,7 +131,7 @@ public class Tile : MonoBehaviour
 
         return false;
     }
-
+    /*
     IEnumerator ItemPopUp(string Iname) 
     {
         if (itemPopup.IsActive() == false) 
@@ -142,4 +142,5 @@ public class Tile : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
     }
+    */
 }
