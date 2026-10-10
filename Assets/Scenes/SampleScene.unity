@@ -308,7 +308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &218099628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,9 +430,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   tilePrefab: {fileID: 6561352744142849839, guid: 0586019e39c0d6e4190f266e7b9f1ba3, type: 3}
   gameHolder: {fileID: 353896155}
+  playerObject: {fileID: 808364644}
   safeCenter: 1
   flagLimit: 10
   flagCount: 0
+  itemPopup: {fileID: 0}
 --- !u!4 &353896155
 Transform:
   m_ObjectHideFlags: 0
@@ -1370,7 +1372,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 353896156}
         m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: LoadSceneByName
         m_Mode: 5
