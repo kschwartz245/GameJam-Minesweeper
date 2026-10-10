@@ -25,8 +25,11 @@ public class Tile : MonoBehaviour
     public bool hasItem = false;
     public ShopItem item;
 
+    private Text itemPopup;
+
     void Awake()
     {
+        itemPopup = gameManager.itemPopup;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -131,7 +134,7 @@ public class Tile : MonoBehaviour
 
         return false;
     }
-    /*
+    
     IEnumerator ItemPopUp(string Iname) 
     {
         if (itemPopup.IsActive() == false) 
@@ -142,5 +145,4 @@ public class Tile : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
     }
-    */
 }
