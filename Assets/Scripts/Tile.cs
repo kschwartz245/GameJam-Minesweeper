@@ -111,11 +111,11 @@ public class Tile : MonoBehaviour
 
     private bool HasShield() 
     {
-        for (int i = 0; i < ItemPoolManager.ItemPool.Count; i++) 
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++) 
         {
-            if (ItemPoolManager.ItemPool[i].itemID == 0) 
+            if (ItemPoolManager.inventory[i].itemID == 0) 
             {
-                ItemPoolManager.ItemPool.RemoveAt(i);
+                ItemPoolManager.inventory.RemoveAt(i);
 
                 return true;
             }
