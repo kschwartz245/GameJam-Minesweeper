@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Tile : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class Tile : MonoBehaviour
     public bool active = true;
     public bool isMine = false;
     public int mineCount = 0;
+    public bool hasItem = false;
+    public ShopItem item;
 
     void Awake()
     {
@@ -76,6 +80,10 @@ public class Tile : MonoBehaviour
             } 
             else
             {
+                if (hasItem) 
+                {
+
+                }
                 spriteRenderer.sprite = clickedTile[mineCount];
                 if(mineCount == 0)
                 {
@@ -124,4 +132,14 @@ public class Tile : MonoBehaviour
         return false;
     }
 
+    IEnumerator ItemPopUp(string Iname) 
+    {
+        if (itemPopup.IsActive() == false) 
+        {
+            itemPopup.gameObject.SetActive(true);
+        }
+        itemPopup.text = "You got a " + Iname;
+
+        yield return new WaitForSeconds(2f);
+    }
 }

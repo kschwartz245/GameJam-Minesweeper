@@ -21,6 +21,8 @@ public class ItemCardManager : MonoBehaviour
     //version for randomized items
     public ShopItem[] items;
 
+    public Text yourCoins;
+
     public GameObject[] warnings;
 
     void Start()
@@ -31,6 +33,7 @@ public class ItemCardManager : MonoBehaviour
         int rand = UnityEngine.Random.Range(0, items.Length);
         item = items[rand];
 
+        UpdateYourCoins();
         FillCard();
     }
 
@@ -44,6 +47,7 @@ public class ItemCardManager : MonoBehaviour
                 {
                     ItemPoolManager.coins -= item.itemCost;
                     ItemPoolManager.ItemPool.Add(item);
+                    UpdateYourCoins();
                     icon.color = new Color32(75, 75, 75, 255);
                     cost.text = "SOLD";
                     bought = true;
@@ -75,5 +79,10 @@ public class ItemCardManager : MonoBehaviour
     private void ShowWarning(int index) 
     {
         Instantiate(warnings[index], canvasTransform);
+    }
+
+    public void UpdateYourCoins() 
+    {
+        yourCoins.text = ItemPoolManager.coins.ToString() + " COINS";
     }
 } 
