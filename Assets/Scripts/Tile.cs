@@ -25,9 +25,12 @@ public class Tile : MonoBehaviour
     public bool hasItem = false;
     public ShopItem item;
 
+    private Text itemPopup;
+
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        itemPopup = gameManager.itemPopup;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
