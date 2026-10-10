@@ -163,6 +163,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Winnder!");
             foreach(Tile tile in tiles)
             {
+                if (tile.flagged && tile.isMine) 
+                {
+                    ItemPoolManager.coins += 1;
+                }
+
                 tile.active = false;
                 tile.SetFlaggedIfMine();
             }
