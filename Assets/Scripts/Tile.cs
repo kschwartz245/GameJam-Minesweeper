@@ -29,8 +29,16 @@ public class Tile : MonoBehaviour
 
     void Awake()
     {
-        itemPopup = gameManager.itemPopup;
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    IEnumerator GetPopUp() 
+    {
+        while (itemPopup == null) 
+        {
+            itemPopup = gameManager.itemPopup;
+            yield return null;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -85,7 +93,16 @@ public class Tile : MonoBehaviour
             {
                 if (hasItem) 
                 {
-
+                    StartCoroutine(ItemPopUp(item.itemName));
+                    for (int i = 0; i < ItemPoolManager.ItemPool.Count; i++) 
+                    {
+                        if (ItemPoolManager.ItemPool[i].itemID == item.itemID) 
+                        {
+                            ItemPoolManager.ItemPool.RemoveAt(i);
+                            break;
+                        }
+                    }
+                    ItemPoolManager.inventory.Add(item);
                 }
                 spriteRenderer.sprite = clickedTile[mineCount];
                 if(mineCount == 0)
