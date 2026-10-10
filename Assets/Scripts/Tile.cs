@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Tile : MonoBehaviour
 {
@@ -20,6 +21,14 @@ public class Tile : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            this.ClickedTile();
+        }
     }
 
     private void OnMouseOver()
