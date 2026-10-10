@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour
         if(count == numMines)
         {
             //Flag and disable everything
-            Debug.Log("Winnder!");
+            Debug.Log("Winner!");
             foreach(Tile tile in tiles)
             {
                 if (tile.flagged && tile.isMine) 
