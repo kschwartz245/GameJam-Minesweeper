@@ -63,7 +63,7 @@ public class Tile : MonoBehaviour
 
     public void ClickedTile()
     {
-        if (active & !flagged)
+        if (active)
         {
             active = false;
             if(isMine)
