@@ -4,16 +4,21 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform tilePrefab;
     [SerializeField] private Transform gameHolder;
+    [SerializeField] private GameObject playerObject;
     public bool safeCenter = true;
     public int flagLimit = 10;
     public int flagCount = 0;
 
+    public Text itemPopup;
+
     private SceneChanger sceneChanger;
+    private ItemPoolManager itemManager;
 
     private List<Tile> tiles = new();
 
@@ -26,6 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         sceneChanger = GetComponent<SceneChanger>();
+        itemManager = GetComponent<ItemPoolManager>();
         CreateGameBoard(9, 9, 10);
         //CreateGameBoard(16, 16, 40);
         //CreateGameBoard(30, 16, 90);
@@ -55,8 +61,11 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameState() {
         int[] minePositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
-        
-        for(int i = 0; i < numMines; i++)
+        int[] itemPositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
+
+        //List<ShopItem> pool = new List<ShopItem>();
+
+        for (int i = 0; i < numMines; i++)
         {
             int pos = minePositions[i];
             if(pos != (height * width)/2)
@@ -65,6 +74,19 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < tiles.Count; i++)
         {
             tiles[i].mineCount = HowManyMines(i);
+        }
+
+        if (ItemPoolManager.ItemPool.Count > 0)
+        {
+            for (int i = 0; i < ItemPoolManager.ItemPool.Count; i++)
+            {
+                int pos = itemPositions[i];
+                if (tiles[pos].isMine == false && pos != (height * width) / 2) 
+                {
+                    tiles[pos].hasItem = true;
+                    tiles[pos].item = ItemPoolManager.ItemPool[i];
+                }
+            }
         }
     }
 
@@ -131,6 +153,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     { //disable clicks on all mines
+        Destroy(playerObject);
            foreach (Tile tile in tiles)
         {
             tile.ShowGameOverState();
@@ -141,7 +164,6 @@ public class GameManager : MonoBehaviour
     IEnumerator GoToGO() 
     {
         yield return new WaitForSeconds(2f);
-
         sceneChanger.LoadSceneByName("GameOverScreen");
     }
 
