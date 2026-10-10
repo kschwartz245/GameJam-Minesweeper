@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int flagLimit = 10;
     public int flagCount = 0;
 
-    public Text itemPopup;
+    //public Text itemPopup;
 
     private SceneChanger sceneChanger;
     private ItemPoolManager itemManager;
