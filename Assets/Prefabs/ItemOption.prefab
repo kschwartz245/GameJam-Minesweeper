@@ -182,15 +182,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c139b7f9127c54f98748a479a8f2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemCardManager
+  canvasTransform: {fileID: 0}
   itemName: {fileID: 746834438776875223}
   icon: {fileID: 5707181284602163550}
   cost: {fileID: 375310468669071853}
   description: {fileID: 3762917882197602987}
   item: {fileID: 11400000, guid: d106093c0f4ede248b7643f3bf12e6cf, type: 2}
   items:
-  - {fileID: 11400000, guid: d106093c0f4ede248b7643f3bf12e6cf, type: 2}
-  - {fileID: 11400000, guid: 2dc45127fb1f99f4dbdc7f8f4c3ebf32, type: 2}
-  - {fileID: 11400000, guid: 13dfa3c1c9d4cfe45b87c2f078d3fe39, type: 2}
+  - {fileID: 11400000, guid: 69b374c4d505a9f4c853db4956331fe2, type: 2}
+  - {fileID: 11400000, guid: cd065b75cccf45344995e31a71386cd2, type: 2}
+  - {fileID: 11400000, guid: 42680e61615dc4846a6ee04e4bc16345, type: 2}
+  - {fileID: 11400000, guid: d9ca37f9975f8954cbd46735fca71c9e, type: 2}
   warnings:
   - {fileID: 6055845421800843705, guid: b386a288fd3c87f41bbdd279da0b92d3, type: 3}
   - {fileID: 6892800904320241808, guid: 8128e6fb8c8918749aead1f5bee6b64a, type: 3}
