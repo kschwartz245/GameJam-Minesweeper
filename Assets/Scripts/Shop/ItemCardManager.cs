@@ -8,6 +8,8 @@ public class ItemCardManager : MonoBehaviour
     private int id;
     private bool bought = false;
 
+    public Transform canvasTransform;
+
     public Text itemName;
     public Image icon;
     public Text cost;
@@ -19,8 +21,13 @@ public class ItemCardManager : MonoBehaviour
     //version for randomized items
     public ShopItem[] items;
 
+    public GameObject[] warnings;
+
     void Start()
     {
+        ItemPoolManager.activeShopWarning = false;
+        canvasTransform = transform.parent.GetComponent<Transform>();
+
         int rand = UnityEngine.Random.Range(0, items.Length);
         item = items[rand];
 
@@ -29,22 +36,29 @@ public class ItemCardManager : MonoBehaviour
 
     public void BuyItem() 
     {
-        if (!bought) 
+        if (bought == false) 
         {
             //if (playerCoins >= cost)
             //{
             if (ItemPoolManager.ItemPool.Count < ItemPoolManager.ItemPoolMax)
             {
                 //playerCoins -= cost;
-
+                ItemPoolManager.ItemPool.Add(item);
                 icon.color = new Color32(75, 75, 75, 255);
                 cost.text = "SOLD";
                 bought = true;
             }
+            else 
+            {
+                if (ItemPoolManager.activeShopWarning == false) 
+                {
+                    ShowWarning(0);
+                }
+            }
             /*}
              * else
              * {
-             * Tell the player they can't afford the item
+             * ShowWarning(1);
              * }
             */
         }
@@ -58,4 +72,9 @@ public class ItemCardManager : MonoBehaviour
         cost.text = "Cost: " + item.itemCost.ToString() + " coins";
         description.text = item.itemDesc;
     }
-}
+
+    private void ShowWarning(int index) 
+    {
+        Instantiate(warnings[index], canvasTransform);
+    }
+} 
