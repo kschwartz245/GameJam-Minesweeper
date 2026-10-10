@@ -32,15 +32,6 @@ public class Tile : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    IEnumerator GetPopUp() 
-    {
-        while (itemPopup == null) 
-        {
-            itemPopup = gameManager.itemPopup;
-            yield return null;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -91,14 +82,14 @@ public class Tile : MonoBehaviour
             } 
             else
             {
-                if (hasItem) 
-                {
-                    StartCoroutine(ItemPopUp(item.itemName));
+                if (hasItem)
+                { 
                     for (int i = 0; i < ItemPoolManager.ItemPool.Count; i++) 
                     {
                         if (ItemPoolManager.ItemPool[i].itemID == item.itemID) 
                         {
                             ItemPoolManager.ItemPool.RemoveAt(i);
+                            Debug.Log("picked up a " + item.itemName);
                             break;
                         }
                     }
@@ -150,16 +141,5 @@ public class Tile : MonoBehaviour
         }
 
         return false;
-    }
-    
-    IEnumerator ItemPopUp(string Iname) 
-    {
-        if (itemPopup.IsActive() == false) 
-        {
-            itemPopup.gameObject.SetActive(true);
-        }
-        itemPopup.text = "You got a " + Iname;
-
-        yield return new WaitForSeconds(2f);
     }
 }
