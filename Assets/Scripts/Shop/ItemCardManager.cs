@@ -1,9 +1,11 @@
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemCardManager : MonoBehaviour
 {
     private int id;
+    private bool bought = false;
 
     public Text itemName;
     public Image icon;
@@ -15,6 +17,26 @@ public class ItemCardManager : MonoBehaviour
     void Start()
     {
         FillCard();
+    }
+
+    public void BuyItem() 
+    {
+        if (!bought) 
+        {
+            //if (playerCoins >= cost)
+            //{
+                //Insert code that activate's the item's effect
+                //playerCoins -= cost;
+                icon.color = new Color32(75, 75, 75, 255);
+                cost.text = "SOLD";
+                bought = true;
+            /*}
+             * else
+             * {
+             * Tell the player they can't afford the item
+             * }
+            */
+        }
     }
 
     private void FillCard() 

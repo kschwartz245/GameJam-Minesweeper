@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
   itemID: 999
   itemName: Test
-  itemIcon: {fileID: 8135663367076951168, guid: e338a79fe31a11c4fafeafd97a579af3, type: 3}
+  itemIcon: {fileID: -6470460504253458178, guid: 56095ae8eaefbf745a35045aacd9b22c, type: 3}
   itemCost: 5
   itemDesc: This is a placeholder
