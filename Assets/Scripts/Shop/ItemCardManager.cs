@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,7 @@ public class ItemCardManager : MonoBehaviour
 
     void Start()
     {
-        int rand = Random.Range(0, items.Length);
+        int rand = UnityEngine.Random.Range(0, items.Length);
         item = items[rand];
 
         FillCard();
@@ -32,11 +33,14 @@ public class ItemCardManager : MonoBehaviour
         {
             //if (playerCoins >= cost)
             //{
-                //Insert code that activate's the item's effect
+            if (ItemPoolManager.ItemPool.Count < ItemPoolManager.ItemPoolMax)
+            {
                 //playerCoins -= cost;
+
                 icon.color = new Color32(75, 75, 75, 255);
                 cost.text = "SOLD";
                 bought = true;
+            }
             /*}
              * else
              * {
