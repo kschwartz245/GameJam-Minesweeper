@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform tilePrefab;
     [SerializeField] private Transform gameHolder;
-    [SerializeField] private GameObject playerObject;
     public bool safeCenter = true;
     public int flagLimit = 10;
     public int flagCount = 0;
@@ -153,7 +152,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     { //disable clicks on all mines
-        Destroy(playerObject);
            foreach (Tile tile in tiles)
         {
             tile.ShowGameOverState();
@@ -164,6 +162,7 @@ public class GameManager : MonoBehaviour
     IEnumerator GoToGO() 
     {
         yield return new WaitForSeconds(2f);
+
         sceneChanger.LoadSceneByName("GameOverScreen");
     }
 
