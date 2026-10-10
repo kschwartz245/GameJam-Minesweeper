@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Transform tilePrefab;
     [SerializeField] private Transform gameHolder;
+
+    private List<Tile> tiles = new();
 
     private int width;
     private int height;
@@ -17,6 +22,7 @@ public class GameManager : MonoBehaviour
         CreateGameBoard(9, 9, 10);
         //CreateGameBoard(16, 16, 40);
         //CreateGameBoard(30, 16, 90);
+        ResetGameState();
     }
 
     public void CreateGameBoard(int width, int height, int numMines)
@@ -32,7 +38,119 @@ public class GameManager : MonoBehaviour
                 float xIndex = col - ((width - 1) / 2.0f);
                 float yIndex = row - ((height - 1) / 2.0f);
                 tileTransform.localPosition = new Vector2(xIndex * tileSize, yIndex * tileSize);
+
+                Tile tile = tileTransform.GetComponent<Tile>();
+                tiles.Add(tile);
+                tile.gameManager = this;
             }
         }
     }
+
+    private void ResetGameState() {
+        int[] minePositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
+        
+        for(int i = 0; i < numMines; i++)
+        {
+            int pos = minePositions[i];
+            tiles[pos].isMine = true;
+        }
+        for(int i = 0; i < tiles.Count; i++)
+        {
+            tiles[i].mineCount = HowManyMines(i);
+        }
+    }
+
+    private int HowManyMines(int location)
+    {
+        int count = 0;
+        foreach(int pos in GetNeighbours(location))
+        {
+            if (tiles[pos].isMine)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private List<int> GetNeighbours(int pos)
+    {
+        List<int> neighbours = new();
+        int row = pos / width;
+        int col = pos % width;
+        //(0,0) is bottem left
+        if (row < (height - 1))
+        {
+            neighbours.Add(pos + width); //North
+            if (col > 0) {
+                neighbours.Add(pos + width - 1); //North-West
+            }
+            if (col < (width - 1)) {
+                neighbours.Add(pos + width + 1); //North East
+            }
+        }
+        if (col > 0)
+        {
+            neighbours.Add(pos - 1); //West
+        }
+        if (col < (width - 1))
+        {
+            neighbours.Add(pos + 1); //East
+        }
+        if(row > 0)
+        {
+            neighbours.Add(pos - width);
+            if(col > 0)
+            {
+                neighbours.Add(pos - width - 1); //South-West
+            }
+            if(col < (width - 1))
+            {
+                neighbours.Add(pos - width + 1); //South-East
+            }
+        }
+        return neighbours;
+    }
+
+    public void ClickNeighbours(Tile tile)
+    {
+        int location = tiles.IndexOf(tile);
+        foreach (int pos in GetNeighbours(location))
+        {
+            tiles[pos].ClickedTile();
+        }
+    }
+
+    public void GameOver()
+    { //disable clicks on all mines
+        foreach (Tile tile in tiles)
+        {
+            tile.ShowGameOverState();
+        }
+    }
+
+    public void CheckGameOver()
+    {
+        //if there are numMines left active, then we're done
+        int count = 0;
+        foreach(Tile tile in tiles)
+        {
+            if (tile.active)
+            {
+                count++;
+            }
+        }
+
+        if(count == numMines)
+        {
+            //Flag and disable everything
+            Debug.Log("Winnder!");
+            foreach(Tile tile in tiles)
+            {
+                tile.active = false;
+                tile.SetFlaggedIfMine();
+            }
+        }
+    }
+ 
 }
