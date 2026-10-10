@@ -12,10 +12,17 @@ public class ItemCardManager : MonoBehaviour
     public Text cost;
     public Text description;
 
+    //version for manually setting items
     public ShopItem item;
+
+    //version for randomized items
+    public ShopItem[] items;
 
     void Start()
     {
+        int rand = Random.Range(0, items.Length);
+        item = items[rand];
+
         FillCard();
     }
 

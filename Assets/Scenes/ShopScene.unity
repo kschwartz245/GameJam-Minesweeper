@@ -508,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &317837070
 RectTransform:
   m_ObjectHideFlags: 0
@@ -662,6 +662,10 @@ MonoBehaviour:
   cost: {fileID: 708955645}
   description: {fileID: 565152685}
   item: {fileID: 11400000, guid: d106093c0f4ede248b7643f3bf12e6cf, type: 2}
+  items:
+  - {fileID: 11400000, guid: d106093c0f4ede248b7643f3bf12e6cf, type: 2}
+  - {fileID: 11400000, guid: 2dc45127fb1f99f4dbdc7f8f4c3ebf32, type: 2}
+  - {fileID: 11400000, guid: 13dfa3c1c9d4cfe45b87c2f078d3fe39, type: 2}
 --- !u!1 &511991669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1376,7 +1380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &931985165
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1411,7 +1415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1286397915
 RectTransform:
   m_ObjectHideFlags: 0
