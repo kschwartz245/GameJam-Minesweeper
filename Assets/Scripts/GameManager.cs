@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int flagLimit = 10;
     public int flagCount = 0;
 
-    //public Text itemPopup;
+    public Text coinResult;
 
     private SceneChanger sceneChanger;
     private ItemPoolManager itemManager;
@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     private int width;
     private int height;
     private int numMines;
+
+    private int coinsEarned = 0;
 
     private readonly float tileSize = 0.5f;
 
@@ -183,17 +185,24 @@ public class GameManager : MonoBehaviour
         {
             //Flag and disable everything
             Debug.Log("Winner!");
-            foreach(Tile tile in tiles)
-            {
-                if (tile.flagged && tile.isMine) 
-                {
-                    ItemPoolManager.coins += 1;
-                }
-
-                tile.active = false;
-                tile.SetFlaggedIfMine();
-            }
+            WinRewards();
         }
     }
  
+    public void WinRewards() 
+    {
+        foreach (Tile tile in tiles)
+        {
+            if (tile.flagged && tile.isMine)
+            {
+                ItemPoolManager.coins += 1;
+                coinsEarned += 1;
+            }
+
+            tile.active = false;
+            tile.SetFlaggedIfMine();
+        }
+
+        coinResult.text = "Coins Earned: " + coinsEarned + " (" + ItemPoolManager.coins + " total)";
+    }
 }
