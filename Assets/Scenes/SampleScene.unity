@@ -1097,6 +1097,7 @@ MonoBehaviour:
   isRepeatedMovement: 0
   moveDuration: 0.1
   gridSize: 0.5
+  isJumping: 0
 --- !u!58 &808364648
 CircleCollider2D:
   m_ObjectHideFlags: 0
