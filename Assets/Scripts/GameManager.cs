@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public Text flagItemCount;
     public Text jumpCount;
-    //public Text shuffleCount;
+    public Text shuffleCount;
     public Text coinResult;
 
     private SceneChanger sceneChanger;
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         CountFlags();
+        CountShuffles();
 
         sceneChanger = GetComponent<SceneChanger>();
         itemManager = GetComponent<ItemPoolManager>();
@@ -81,6 +82,31 @@ public class GameManager : MonoBehaviour
                 tiles.Add(tile);
                 tile.gameManager = this;
             }
+        }
+    }
+
+    public void ShuffleGameState()
+    {
+        int[] minePositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
+        int mineLimit = minePositions.Length; 
+
+        for (int i = 0; i < tiles.Count; i++) // Clears Mines From Board
+        {
+            tiles[i].isMine = false;
+            tiles[i].mineCount = HowManyMines(i);
+        }
+
+        for (int i = 0; i < minePositions.Length; i++) //Replace Mines
+        {
+            int pos = minePositions[i];
+                if (!tiles[i].active)
+                {
+                    tiles[pos].isMine = true;
+                }
+                else
+                {
+                    minePositions[i] = minePositions[Random.Range(i, tiles.Count)];
+                }
         }
     }
 
@@ -228,6 +254,20 @@ public class GameManager : MonoBehaviour
         }
 
         jumpCount.text = "Uses Left: " + j;
+    }
+
+    public void CountShuffles()
+    {
+        int j = 0;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            if (ItemPoolManager.inventory[i].itemID == 2)
+            {
+                j++;
+            }
+        }
+
+        shuffleCount.text = "Uses Left: " + j;
     }
 
     public void GameOver()

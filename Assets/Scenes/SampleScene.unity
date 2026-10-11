@@ -685,7 +685,7 @@ Transform:
   m_GameObject: {fileID: 236394467}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -752.72, y: -333, z: -9720}
+  m_LocalPosition: {x: 676, y: 272, z: -9720}
   m_LocalScale: {x: 330.73273, y: 330.73273, z: 82.68318}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -795,6 +795,7 @@ MonoBehaviour:
   flagCount: 0
   flagItemCount: {fileID: 1196599399}
   jumpCount: {fileID: 357641906}
+  shuffleCount: {fileID: 619767960}
   coinResult: {fileID: 1342294724}
   width: 0
   height: 0
@@ -2233,7 +2234,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 868084754}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 353896154}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ShuffleGameState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &868084754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3546,7 +3559,7 @@ Transform:
   m_GameObject: {fileID: 1443042172}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -752.72, y: 10, z: -9720}
+  m_LocalPosition: {x: -660, y: 10, z: -9720}
   m_LocalScale: {x: 330.73273, y: 330.73273, z: 82.68318}
   m_ConstrainProportionsScale: 0
   m_Children:
