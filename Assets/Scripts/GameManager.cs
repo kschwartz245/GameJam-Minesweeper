@@ -22,8 +22,9 @@ public class GameManager : MonoBehaviour
 
     private List<Tile> tiles = new();
 
-    private int width;
-    private int height;
+    //width and height are only public for the sake of defining edges in EdgeDetection
+    public int width = 0;
+    public int height = 0;
     private int numMines;
 
     private int coinsEarned = 0;
@@ -35,8 +36,8 @@ public class GameManager : MonoBehaviour
         sceneChanger = GetComponent<SceneChanger>();
         itemManager = GetComponent<ItemPoolManager>();
         CreateGameBoard(9, 9, 10);
-        //CreateGameBoard(16, 16, 40);
-        //CreateGameBoard(30, 16, 90);
+        //CreateGameBoard(15, 15, 40);
+        //CreateGameBoard(29, 15, 90);
         ResetGameState();
     }
 

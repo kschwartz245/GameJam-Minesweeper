@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +16,7 @@ public class EdgeDetection : MonoBehaviour
 
     void Start()
     {
-        NegEdgeX = EdgeX - (EdgeX * 2);
-        NegEdgeY = EdgeY - (EdgeY * 2);
+        StartCoroutine(FindBoardSize());
     }
 
     // Update is called once per frame
@@ -38,5 +39,25 @@ public class EdgeDetection : MonoBehaviour
         }
     }
 
+    IEnumerator FindBoardSize() 
+    {
+        while (manager.width == 0) 
+        {
+            yield return null;
+        }
 
+        EdgeX = (manager.width - 1) / 4f;
+
+        while (manager.height == 0)
+        {
+            yield return null;
+        }
+
+        EdgeY = (manager.height - 1) / 4f;
+
+        NegEdgeX = EdgeX - (EdgeX * 2);
+        NegEdgeY = EdgeY - (EdgeY * 2);
+
+        yield return null;
+    }
 }
