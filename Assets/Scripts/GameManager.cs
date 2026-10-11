@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
         int w = 9 + ItemPoolManager.currentLevel * 2;
         int h = w;
         int m = 10 + ItemPoolManager.currentLevel * 6;
-        if (w > 29) 
+        if (w > 21) 
         {
-            w = 29;
+            w = 21;
         }
         if (h > 15) 
         {
