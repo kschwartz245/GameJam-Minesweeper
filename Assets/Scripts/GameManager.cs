@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
 
     private List<Tile> tiles = new();
 
-    private int width;
-    private int height;
+    public int width = 0;
+    public int height = 0;
     private int numMines;
 
     private int coinsEarned = 0;
@@ -34,7 +34,25 @@ public class GameManager : MonoBehaviour
     {
         sceneChanger = GetComponent<SceneChanger>();
         itemManager = GetComponent<ItemPoolManager>();
-        CreateGameBoard(9, 9, 10);
+
+        int w = 9 + ItemPoolManager.currentLevel * 2;
+        int h = w;
+        int m = 10 + ItemPoolManager.currentLevel * 6;
+        if (w > 29) 
+        {
+            w = 29;
+        }
+        if (h > 15) 
+        {
+            h = 15;
+        }
+        if (m > 90) 
+        {
+            m = 90;
+        }
+
+        CreateGameBoard(w, h, m);
+        //CreateGameBoard(9, 9, 10);
         //CreateGameBoard(16, 16, 40);
         //CreateGameBoard(30, 16, 90);
         ResetGameState();
@@ -191,6 +209,7 @@ public class GameManager : MonoBehaviour
  
     public void WinRewards() 
     {
+        ItemPoolManager.currentLevel += 1;
         foreach (Tile tile in tiles)
         {
             if (tile.flagged && tile.isMine)

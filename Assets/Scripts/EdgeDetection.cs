@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,8 +15,7 @@ public class EdgeDetection : MonoBehaviour
 
     void Start()
     {
-        NegEdgeX = EdgeX - (EdgeX * 2);
-        NegEdgeY = EdgeY - (EdgeY * 2);
+        StartCoroutine(SetEdges());
     }
 
     // Update is called once per frame
@@ -38,5 +38,19 @@ public class EdgeDetection : MonoBehaviour
         }
     }
 
+    IEnumerator SetEdges() 
+    {
+        while (manager.width == 0 && manager.height == 0) 
+        {
+            yield return null;
+        }
 
+        EdgeX = (manager.width - 1) / 4f;
+        EdgeY = (manager.height - 1) / 4f;
+
+        NegEdgeX = EdgeX - (EdgeX * 2);
+        NegEdgeY = EdgeY - (EdgeY * 2);
+
+        yield return null;
+    }
 }
