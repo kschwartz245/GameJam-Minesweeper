@@ -801,6 +801,8 @@ MonoBehaviour:
   songs:
   - {fileID: 8300000, guid: 660e5a73e10697a47a6236e17aef320c, type: 3}
   - {fileID: 8300000, guid: 7e8ea8707a94731488b0d80fe123bfca, type: 3}
+  - {fileID: 8300000, guid: 6f0e172fc81accc4c9b4f24ad229320e, type: 3}
+  - {fileID: 8300000, guid: 06e638444f216774283f3c2fa23a59a6, type: 3}
 --- !u!82 &1277232640
 AudioSource:
   m_ObjectHideFlags: 0
@@ -814,7 +816,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
