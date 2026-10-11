@@ -714,6 +714,7 @@ MonoBehaviour:
   safeCenter: 1
   flagLimit: 10
   flagCount: 0
+  flagItemCount: {fileID: 1196599399}
   jumpCount: {fileID: 357641906}
   coinResult: {fileID: 1342294724}
   width: 0
@@ -1315,7 +1316,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 536536080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 353896154}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: UseEXFlag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &536536080
 MonoBehaviour:
   m_ObjectHideFlags: 0
