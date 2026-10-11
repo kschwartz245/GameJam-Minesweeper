@@ -7,6 +7,7 @@ public class playerMove : MonoBehaviour
     [SerializeField] private float moveDuration = 0.1f;
     [SerializeField] private float gridSize = 1f;
     private bool isMoving = false;
+    public bool isJumping = false;
     void Update()
     {
         if (!isMoving)
@@ -21,21 +22,43 @@ public class playerMove : MonoBehaviour
                 inputFunction = Input.GetKeyDown;
             }
 
-            if (inputFunction(KeyCode.UpArrow))
+            if (!isJumping)
             {
-                StartCoroutine(Move(Vector2.up));
-            }
-            else if (inputFunction(KeyCode.DownArrow))
+                if (inputFunction(KeyCode.UpArrow))
+                {
+                    StartCoroutine(Move(Vector2.up));
+                }
+                else if (inputFunction(KeyCode.DownArrow))
+                {
+                    StartCoroutine(Move(Vector2.down));
+                }
+                else if (inputFunction(KeyCode.LeftArrow))
+                {
+                    StartCoroutine(Move(Vector2.left));
+                }
+                else if (inputFunction(KeyCode.RightArrow))
+                {
+                    StartCoroutine(Move(Vector2.right));
+                }
+            } 
+            else
             {
-                StartCoroutine(Move(Vector2.down));
-            }
-            else if (inputFunction(KeyCode.LeftArrow))
-            {
-                StartCoroutine(Move(Vector2.left));
-            }
-            else if (inputFunction(KeyCode.RightArrow))
-            {
-                StartCoroutine(Move(Vector2.right));
+                if (inputFunction(KeyCode.UpArrow))
+                {
+                    StartCoroutine(Jump(Vector2.up));
+                }
+                else if (inputFunction(KeyCode.DownArrow))
+                {
+                    StartCoroutine(Jump(Vector2.down));
+                }
+                else if (inputFunction(KeyCode.LeftArrow))
+                {
+                    StartCoroutine(Jump(Vector2.left));
+                }
+                else if (inputFunction(KeyCode.RightArrow))
+                {
+                    StartCoroutine(Jump(Vector2.right));
+                }
             }
         }
     }
@@ -57,5 +80,16 @@ public class playerMove : MonoBehaviour
         }
         transform.position = endPosition;
         isMoving = false;
+    }
+
+    private IEnumerator Jump(Vector2 direction)
+    {
+        isMoving = true;
+        Vector2 startPosition = transform.position;
+        Vector2 endPosition = startPosition + (direction * gridSize)*2;
+        transform.position = endPosition;
+        isMoving = false;
+        isJumping = false;
+        yield return null;
     }
 }
