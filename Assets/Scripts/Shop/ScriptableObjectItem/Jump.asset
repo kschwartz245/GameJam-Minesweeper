@@ -15,5 +15,5 @@ MonoBehaviour:
   itemID: 3
   itemName: Jump
   itemIcon: {fileID: -7190551325082909385, guid: 06586894ebda779478e1a785837c2047, type: 3}
-  itemCost: 7
+  itemCost: 5
   itemDesc: Jump over a tile, moving two spaces in one turn
