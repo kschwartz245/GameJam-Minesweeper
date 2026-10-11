@@ -13,6 +13,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private Sprite mineTile;
     [SerializeField] private Sprite mineWrongTile;
     [SerializeField] private Sprite mineHitTile;
+    [SerializeField] private Sprite hiddenItem;
 
     [Header("GM set via code")]
     public GameManager gameManager;
@@ -173,5 +174,10 @@ public class Tile : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void SetItemSprite() 
+    {
+        spriteRenderer.sprite = hiddenItem;
     }
 }

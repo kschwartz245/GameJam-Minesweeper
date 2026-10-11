@@ -195,8 +195,11 @@ MonoBehaviour:
   mineTile: {fileID: -5939084792424487179, guid: f9f965eece0504b428812af9d8056ee1, type: 3}
   mineWrongTile: {fileID: 4300463617629797122, guid: 4a82d60ff5c13ae49b383dcff4868821, type: 3}
   mineHitTile: {fileID: -6203530660284440750, guid: fc6a537af8a4a6544b5a9ea60f929dcc, type: 3}
+  hiddenItem: {fileID: 8887595993575097365, guid: 9e303e1ae00edee42a8b5ab4c11ee039, type: 3}
   gameManager: {fileID: 0}
   flagged: 0
   active: 1
   isMine: 0
   mineCount: 0
+  hasItem: 0
+  item: {fileID: 0}

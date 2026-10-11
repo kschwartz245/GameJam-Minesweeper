@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour
                 {
                     tiles[pos].hasItem = true;
                     tiles[pos].item = ItemPoolManager.ItemPool[i];
+                    tiles[pos].SetItemSprite();
                 }
             }
         }
