@@ -795,6 +795,7 @@ MonoBehaviour:
   flagCount: 0
   flagItemCount: {fileID: 1196599399}
   jumpCount: {fileID: 357641906}
+  shuffleCount: {fileID: 619767960}
   coinResult: {fileID: 1342294724}
   width: 0
   height: 0

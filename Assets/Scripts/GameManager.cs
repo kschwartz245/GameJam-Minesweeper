@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 
     public Text flagItemCount;
     public Text jumpCount;
-    //public Text shuffleCount;
+    public Text shuffleCount;
     public Text coinResult;
 
     private SceneChanger sceneChanger;
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         CountFlags();
+        CountShuffles();
 
         sceneChanger = GetComponent<SceneChanger>();
         itemManager = GetComponent<ItemPoolManager>();
@@ -253,6 +254,20 @@ public class GameManager : MonoBehaviour
         }
 
         jumpCount.text = "Uses Left: " + j;
+    }
+
+    public void CountShuffles()
+    {
+        int j = 0;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            if (ItemPoolManager.inventory[i].itemID == 2)
+            {
+                j++;
+            }
+        }
+
+        shuffleCount.text = "Uses Left: " + j;
     }
 
     public void GameOver()
