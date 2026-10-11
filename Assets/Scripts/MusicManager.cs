@@ -43,9 +43,13 @@ public class MusicManager : MonoBehaviour
     {
         if (audioSource == null) return;
 
-        if(scene.name == "TitleScreen" && !audioSource.isPlaying)
+        if(scene.name == "TitleScreen")
         {
-            PlayMusic();
+            if(songs != null && songs.Length > 0)
+            {
+                int randomSong = Random.Range(0, songs.Length);
+                PlaySong(randomSong);
+            }
         }
         else if (scene.name == "GameOverScreen")
         {
