@@ -467,7 +467,7 @@ Canvas:
   m_UseReflectionProbes: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 360966149
+  m_SortingLayerID: 1092293673
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &218099631
@@ -485,7 +485,6 @@ RectTransform:
   - {fileID: 407751885}
   - {fileID: 1546861492}
   - {fileID: 1538049816}
-  - {fileID: 1342294723}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -701,7 +700,6 @@ MonoBehaviour:
   safeCenter: 1
   flagLimit: 10
   flagCount: 0
-  coinResult: {fileID: 1342294724}
 --- !u!4 &353896155
 Transform:
   m_ObjectHideFlags: 0
@@ -2662,6 +2660,8 @@ MonoBehaviour:
   EdgeY: 2
   targetObj: {fileID: 218099627}
   playerObj: {fileID: 808364644}
+<<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &830169716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2938,6 +2938,10 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+=======
+>>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
+=======
+>>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
 --- !u!1 &956050036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,6 +3199,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077344035}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1180764228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,6 +3585,10 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392471724}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
+=======
+>>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
 --- !u!1 &1422358715
 GameObject:
   m_ObjectHideFlags: 0
