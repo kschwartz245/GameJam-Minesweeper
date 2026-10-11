@@ -15,5 +15,5 @@ MonoBehaviour:
   itemID: 0
   itemName: Shield
   itemIcon: {fileID: -408833206904718572, guid: 2855e4b36981bef4eb95f23c94aba535, type: 3}
-  itemCost: 10
+  itemCost: 8
   itemDesc: Protects you from one mine
