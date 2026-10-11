@@ -25,7 +25,7 @@ public class Tile : MonoBehaviour
     public bool hasItem = false;
     public ShopItem item;
 
-    //private Text itemPopup;
+    private Text itemPopup;
 
     void Awake()
     {
@@ -93,14 +93,7 @@ public class Tile : MonoBehaviour
                             break;
                         }
                     }
-                    if (item.itemID == 1)
-                    {
-                        gameManager.flagLimit++;
-                    }
-                    else
-                    {
-                        ItemPoolManager.inventory.Add(item);
-                    }
+                    ItemPoolManager.inventory.Add(item);
                 }
                 spriteRenderer.sprite = clickedTile[mineCount];
                 if(mineCount == 0)

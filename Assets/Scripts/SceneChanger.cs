@@ -19,11 +19,10 @@ public class SceneChanger : MonoBehaviour
 
     private void LoadScene(string sceneName)
     {
-        if(transitionFade != null && transitionFade.gameObject.activeInHierarchy)
+        if(transitionFade != null)
         {
             transitionFade.FadeAndLoad(sceneName);
-        } 
-        else
+        } else
         {
             SceneManager.LoadScene(sceneName);
         }
