@@ -82,6 +82,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ShuffleGameState()
+    {
+        int[] minePositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
+        int mineLimit = minePositions.Length; 
+
+        for (int i = 0; i < tiles.Count; i++) // Clears Mines From Board
+        {
+            tiles[i].isMine = false;
+            tiles[i].mineCount = HowManyMines(i);
+        }
+
+        for (int i = 0; i < minePositions.Length; i++) //Replace Mines
+        {
+            int pos = minePositions[i];
+                if (!tiles[i].active)
+                {
+                    tiles[pos].isMine = true;
+                }
+                else
+                {
+                    minePositions[i] = minePositions[Random.Range(i, tiles.Count)];
+                }
+        }
+    }
+
     private void ResetGameState() {
         int[] minePositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
         int[] itemPositions = Enumerable.Range(0, tiles.Count).OrderBy(x => Random.Range(0.0f, 1.0f)).ToArray();
