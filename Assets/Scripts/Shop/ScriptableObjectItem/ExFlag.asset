@@ -15,5 +15,5 @@ MonoBehaviour:
   itemID: 1
   itemName: Extra Flag
   itemIcon: {fileID: -2004969218324262171, guid: 33fa030299f780d4fb39b207bc94b8bb, type: 3}
-  itemCost: 4
+  itemCost: 3
   itemDesc: Obtain an extra flag
