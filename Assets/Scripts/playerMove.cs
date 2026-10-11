@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMove : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class playerMove : MonoBehaviour
     [SerializeField] private float gridSize = 1f;
     private bool isMoving = false;
     public bool isJumping = true;
+
+    public Text jumpUses;
+
+    void Start()
+    {
+        CountJumps();
+    }
+
     void Update()
     {
         if (!isMoving)
@@ -59,6 +68,52 @@ public class playerMove : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ActivateJump()
+    {
+        //Don't allow items to be activated while moving
+        if (isMoving || isJumping) 
+        {
+            return;
+        }
+
+        bool loopRan = false;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            loopRan = true;
+            if (ItemPoolManager.inventory[i].itemID == 3)
+            {
+                ItemPoolManager.inventory.RemoveAt(i);
+                break;
+            }
+            if (i == ItemPoolManager.inventory.Count - 1) 
+            {
+                //if there are no jump items, cancel the function
+                return;
+            }
+        }
+        if (loopRan == false) 
+        {
+            return;
+        }
+
+        isJumping = true;
+        CountJumps();
+    }
+
+    private void CountJumps() 
+    {
+        int j = 0;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            if (ItemPoolManager.inventory[i].itemID == 3)
+            {
+                j++;
+            }
+        }
+
+        jumpUses.text = "Uses Left: " + j;
     }
 
     private IEnumerator Move(Vector2 direction)
