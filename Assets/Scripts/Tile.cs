@@ -32,6 +32,12 @@ public class Tile : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    public void SpriteUpdate() // Called From GM to update nums
+    {
+        if(!active)
+        spriteRenderer.sprite = clickedTile[mineCount];
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
