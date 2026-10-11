@@ -2661,6 +2661,7 @@ MonoBehaviour:
   targetObj: {fileID: 218099627}
   playerObj: {fileID: 808364644}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &830169716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,6 +2940,8 @@ SpriteRenderer:
   m_BlendShapeWeights: []
 =======
 >>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
+=======
+>>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
 --- !u!1 &956050036
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3199,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077344035}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!1 &1180764228
 GameObject:
@@ -3581,6 +3585,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392471724}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
 =======
 >>>>>>> parent of bae749e (Merge pull request #30 from kschwartz245/brandon2)
 --- !u!1 &1422358715
