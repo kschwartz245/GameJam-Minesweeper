@@ -93,14 +93,33 @@ public class Tile : MonoBehaviour
                             break;
                         }
                     }
-                    if (item.itemID == 1)
+
+                    switch (item.itemID) 
+                    {
+                        case 0: //shield
+                            ItemPoolManager.inventory.Add(item);
+                            break;
+                        case 1: //extra flag
+                            ItemPoolManager.inventory.Add(item);
+                            gameManager.CountFlags();
+                            break;
+                        case 2: //shuffle
+                            ItemPoolManager.inventory.Add(item);
+                            //shuffle UI
+                            break;
+                        case 3: //jump
+                            ItemPoolManager.inventory.Add(item);
+                            gameManager.CountJumps();
+                            break;
+                    }
+                    /*if (item.itemID == 1)
                     {
                         gameManager.flagLimit++;
                     }
                     else
                     {
                         ItemPoolManager.inventory.Add(item);
-                    }
+                    }*/
                 }
                 spriteRenderer.sprite = clickedTile[mineCount];
                 if(mineCount == 0)

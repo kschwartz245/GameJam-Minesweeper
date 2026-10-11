@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerMove : MonoBehaviour
 {
@@ -7,6 +8,15 @@ public class playerMove : MonoBehaviour
     [SerializeField] private float moveDuration = 0.1f;
     [SerializeField] private float gridSize = 1f;
     private bool isMoving = false;
+    public bool isJumping = true;
+
+    public Text jumpUses;
+
+    void Start()
+    {
+        CountJumps();
+    }
+
     void Update()
     {
         if (!isMoving)
@@ -20,24 +30,90 @@ public class playerMove : MonoBehaviour
             {
                 inputFunction = Input.GetKeyDown;
             }
-
-            if (inputFunction(KeyCode.UpArrow))
-            {
-                StartCoroutine(Move(Vector2.up));
+            if (isJumping) {
+                if (inputFunction(KeyCode.UpArrow))
+                {
+                    StartCoroutine(Jump(Vector2.up));
+                }
+                else if (inputFunction(KeyCode.DownArrow))
+                {
+                    StartCoroutine(Jump(Vector2.down));
+                }
+                else if (inputFunction(KeyCode.LeftArrow))
+                {
+                    StartCoroutine(Jump(Vector2.left));
+                }
+                else if (inputFunction(KeyCode.RightArrow))
+                {
+                    StartCoroutine(Jump(Vector2.right));
+                }
             }
-            else if (inputFunction(KeyCode.DownArrow))
+            else
             {
-                StartCoroutine(Move(Vector2.down));
-            }
-            else if (inputFunction(KeyCode.LeftArrow))
-            {
-                StartCoroutine(Move(Vector2.left));
-            }
-            else if (inputFunction(KeyCode.RightArrow))
-            {
-                StartCoroutine(Move(Vector2.right));
+                if (inputFunction(KeyCode.UpArrow))
+                {
+                    StartCoroutine(Move(Vector2.up));
+                }
+                else if (inputFunction(KeyCode.DownArrow))
+                {
+                    StartCoroutine(Move(Vector2.down));
+                }
+                else if (inputFunction(KeyCode.LeftArrow))
+                {
+                    StartCoroutine(Move(Vector2.left));
+                }
+                else if (inputFunction(KeyCode.RightArrow))
+                {
+                    StartCoroutine(Move(Vector2.right));
+                }
             }
         }
+    }
+
+    public void ActivateJump()
+    {
+        //Don't allow items to be activated while moving
+        if (isMoving || isJumping) 
+        {
+            return;
+        }
+
+        bool loopRan = false;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            loopRan = true;
+            if (ItemPoolManager.inventory[i].itemID == 3)
+            {
+                ItemPoolManager.inventory.RemoveAt(i);
+                break;
+            }
+            if (i == ItemPoolManager.inventory.Count - 1) 
+            {
+                //if there are no jump items, cancel the function
+                return;
+            }
+        }
+        if (loopRan == false) 
+        {
+            return;
+        }
+
+        isJumping = true;
+        CountJumps();
+    }
+
+    private void CountJumps() 
+    {
+        int j = 0;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            if (ItemPoolManager.inventory[i].itemID == 3)
+            {
+                j++;
+            }
+        }
+
+        jumpUses.text = "Uses Left: " + j;
     }
 
     private IEnumerator Move(Vector2 direction)
@@ -57,5 +133,17 @@ public class playerMove : MonoBehaviour
         }
         transform.position = endPosition;
         isMoving = false;
+    }
+
+    private IEnumerator Jump(Vector2 direction)
+    {
+        isMoving = true;
+
+        Vector2 startPosition = transform.position;
+        Vector2 endPosition = startPosition + (direction * gridSize)*2;
+        yield return null;
+        transform.position = endPosition;
+        isMoving = false;
+        isJumping = false;
     }
 }
