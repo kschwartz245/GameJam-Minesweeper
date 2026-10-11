@@ -10,6 +10,7 @@ public class EdgeDetection : MonoBehaviour
     private float NegEdgeY;
     public GameObject targetObj;
     public GameObject playerObj;
+    public GameManager manager;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class EdgeDetection : MonoBehaviour
         {
             Debug.Log("X Threshold Reached");
             targetObj.SetActive(true);
+            manager.WinRewards();
             Destroy(playerObj);
         }
 
@@ -31,6 +33,7 @@ public class EdgeDetection : MonoBehaviour
         {
             Debug.Log("Y Threshold Reached");
             targetObj.SetActive(true);
+            manager.WinRewards();
             Destroy(playerObj);
         }
     }
