@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int flagLimit = 10;
     public int flagCount = 0;
 
-    //public Text flagItemCount;
+    public Text flagItemCount;
     public Text jumpCount;
     //public Text shuffleCount;
     public Text coinResult;
@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        CountFlags();
+
         sceneChanger = GetComponent<SceneChanger>();
         itemManager = GetComponent<ItemPoolManager>();
 
@@ -172,6 +174,46 @@ public class GameManager : MonoBehaviour
         {
             tiles[pos].ClickedTile();
         }
+    }
+
+    public void UseEXFlag() 
+    {
+        bool loopRan = false;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            loopRan = true;
+            if (ItemPoolManager.inventory[i].itemID == 1)
+            {
+                ItemPoolManager.inventory.RemoveAt(i);
+                break;
+            }
+            if (i == ItemPoolManager.inventory.Count - 1)
+            {
+                //if there are no valid items, cancel the function
+                return;
+            }
+        }
+        if (loopRan == false)
+        {
+            return;
+        }
+
+        flagLimit += 1;
+        CountFlags();
+    }
+
+    public void CountFlags()
+    {
+        int j = 0;
+        for (int i = 0; i < ItemPoolManager.inventory.Count; i++)
+        {
+            if (ItemPoolManager.inventory[i].itemID == 1)
+            {
+                j++;
+            }
+        }
+
+        flagItemCount.text = "Uses Left: " + j;
     }
 
     public void CountJumps()

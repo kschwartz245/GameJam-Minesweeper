@@ -99,8 +99,9 @@ public class Tile : MonoBehaviour
                         case 0: //shield
                             ItemPoolManager.inventory.Add(item);
                             break;
-                        case 1: //extra flag NEED TO BE REWORKED
-                            gameManager.flagLimit++;
+                        case 1: //extra flag
+                            ItemPoolManager.inventory.Add(item);
+                            gameManager.CountFlags();
                             break;
                         case 2: //shuffle
                             ItemPoolManager.inventory.Add(item);
