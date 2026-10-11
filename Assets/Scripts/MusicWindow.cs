@@ -8,6 +8,7 @@ public class MusicWindow : MonoBehaviour
 {
     [SerializeField] private GameObject musicWindow;
     [SerializeField] private Text songTitle;
+    [SerializeField] private GameObject clickBlocker;
 
     private void Start()
     {
@@ -28,6 +29,11 @@ public class MusicWindow : MonoBehaviour
     {
         bool showWindow = !musicWindow.activeSelf;
         musicWindow.SetActive(showWindow);
+
+        if(clickBlocker != null)
+        {
+            clickBlocker.SetActive(showWindow);
+        }
 
         if (showWindow)
         {
