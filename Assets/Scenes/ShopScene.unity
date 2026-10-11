@@ -595,6 +595,10 @@ PrefabInstance:
       propertyPath: yourCoins
       value: 
       objectReference: {fileID: 1770614230}
+    - target: {fileID: 5402101321398971204, guid: a007760966a329a40bf530b66440a574, type: 3}
+      propertyPath: 'items.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d9ca37f9975f8954cbd46735fca71c9e, type: 2}
     - target: {fileID: 7326923791928993865, guid: a007760966a329a40bf530b66440a574, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1154,6 +1158,10 @@ PrefabInstance:
       propertyPath: yourCoins
       value: 
       objectReference: {fileID: 1770614230}
+    - target: {fileID: 5402101321398971204, guid: a007760966a329a40bf530b66440a574, type: 3}
+      propertyPath: 'items.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d9ca37f9975f8954cbd46735fca71c9e, type: 2}
     - target: {fileID: 7326923791928993865, guid: a007760966a329a40bf530b66440a574, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
