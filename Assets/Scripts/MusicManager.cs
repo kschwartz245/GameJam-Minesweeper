@@ -34,14 +34,20 @@ public class MusicManager : MonoBehaviour
     {
         if (songs != null && songs.Length > 0)
         {
-            PlaySong(0);
+            int randomSong = Random.Range(0, songs.Length);
+            PlaySong(randomSong);
         }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (audioSource == null) return;
-        if (scene.name == "GameOverScreen")
+
+        if(scene.name == "TitleScreen" && !audioSource.isPlaying)
+        {
+            PlayMusic();
+        }
+        else if (scene.name == "GameOverScreen")
         {
             StopMusic();
         }
