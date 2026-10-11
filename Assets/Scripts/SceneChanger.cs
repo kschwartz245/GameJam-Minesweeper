@@ -41,6 +41,7 @@ public class SceneChanger : MonoBehaviour
 
     public void ResetValues()
     {
+        ItemPoolManager.currentLevel = 0;
         ItemPoolManager.coins = 0;
         ItemPoolManager.ItemPool.Clear();
         ItemPoolManager.inventory.Clear();
